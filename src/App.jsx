@@ -5,12 +5,16 @@ function App(){
   const [nombre, setNombre] = useState("");
   const [password, setPassword] = useState("");
 
-  const errorMessage = validate(email, password);
+  const errorMessage = validate(nombre, password);
   
   return (
     <div className="App">
       <h1>Ingresa tu nombre y contraseña para poder ingresar</h1>
-      <form>
+      <form
+        onSubmit={ev =>{
+          ev.preventDefault();
+        }}
+        >
         <input
           type="text"
           name="nombre"
@@ -33,10 +37,10 @@ function App(){
 }
 
 const validate = (nombre, password) => {
-  if(nombre.lenght < 3 ) 
-  return 'debe contener al menos 3 caracteres'
+  if(nombre.length < 3 ) 
+  return 'el nombre debe contener al menos 3 caracteres'
   if(password < 6)
-  return 'debe contener al menos 6 caracteres'
+  return 'el correo debe contener al menos 6 caracteres'
 }
 
 export default App;
